@@ -2,16 +2,17 @@
 A tool for checking as well as exploiting CVE-2021-3120, Arbitrary File Upload vulnerability in YITH WooCommerce Gift Cards Premium version 3.3.0 and below.
 
 ## A Word of Warning
-Please do not run this tool against systems that you do not have permissions to test. Doing so is illegal and you could face prosecution despite your best intentions. If you are an IT/cyber security enthusiast and is curious about how this tool works, please setup your own lab environment to test it out. 
+Please do not run this tool against systems that you do not have permissions to test. Doing so is illegal and you could face prosecution despite your best intentions. If you are an IT/cyber security enthusiast and you are curious about how this tool works, I recommend that you setup your own lab environment for testing this tool out. 
 
 ## Vulnerability Description
-A critical vulnerability (CVSSv3 9.8) exists in the WordPress plugin "YITH WooCommerce Gift Cards Premium" version 3.3.0 and below, which allows an attacker to uploadarbitary files to the server and therefore achieve remote code execution on the server operating system in the security context of the web server. 
+A critical vulnerability (CVSSv3 9.8) exists in the WordPress plugin "YITH WooCommerce Gift Cards Premium" version 3.3.0 and below, which allows an attacker to upload arbitary files to the server and therefore achieve remote code execution on the server operating system in the security context of the web server. 
 
-The plugin allows gift card products to be added to the site (powered by the WordPress WooCommerce plugin) and offers an optional feature that let customers purchase gift cards with custom designs by upload a picture of their choice when placing the gift card product in the cart. The file is submitted via the "ywgc-upload-picture" file parameter of the POST request however the server does not perform sanity checks when processing the request, and stores the file in a predictable location on the server, with the client-specified file name including extension. Code execution can be easily achieved by uploading a PHP file with .php extension and then requesting the file at the uploaded location.
+The plugin allows gift card products to be added to the site (powered by the WordPress WooCommerce plugin) and offers an optional feature that let customers purchase gift cards with custom designs by upload a picture of their choice when placing the gift card product in the cart. The file is submitted via the "ywgc-upload-picture" file parameter of the POST request however the server does not perform any sanity checks before processing the request, and stores the file in a predictable location on the server, with the client-specified file name as well as file extension. Code execution can be easily achieved by uploading a PHP file with .php extension and then requesting the file at the uploaded location.
 
 It is also worth noting that the vulnerability is exploitable regardless of whether the custom gift card design feature is enabled or not. The only condition required to exploit this vulnerability is the ability to add a gift card to the shopping cart. 
 
 ## Vulnerability Details
+| ---  | ---  |
 | Vulnerability Name | Arbitrary File Upload Leading to Remote Code Execution |
 | CVE | CVE-2021-3120 |
 | CVSS Vector | CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H |
@@ -30,7 +31,7 @@ This tool is written to automate the discovery of WordPress sites that may be af
 
 In addition, it has a capability to perform a proof of concept test by uploading a simple php script with a randomly generated name. The script contains a simple echo command, which when requested is used to confirm code execution. As the uploaded file will remain on the server, the randomly generated file name will help reduce the chance of the file being requested by others and also the script would not cause any harm to the server.
 
-The tool can also be used to exploit this vulnerability. The default attack is to upload a simple PHP web shell. This can be used to execute further OS commands, including reverse shells. For more "interesting" scenarios you can specify a custom payload as well as custom file names to bypass further server side restrictions.
+The tool can also be used to exploit this vulnerability. The default attack is to upload a simple PHP web shell. This can be used to execute further OS commands, including reverse shells. For more "interesting" scenarios you can specify a custom payload as well as custom file names to bypass further server-side restrictions.
 
 ## Installation
 
