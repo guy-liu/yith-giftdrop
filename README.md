@@ -12,6 +12,7 @@ The plugin allows gift card products to be added to the site (powered by the Wor
 It is also worth noting that the vulnerability is exploitable regardless of whether the custom gift card design feature is enabled or not. The only condition required to exploit this vulnerability is the ability to add a gift card to the shopping cart. 
 
 ## Vulnerability Details
+|      |      |
 | ---  | ---  |
 | Vulnerability Name | Arbitrary File Upload Leading to Remote Code Execution |
 | CVE | CVE-2021-3120 |
